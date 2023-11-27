@@ -97,7 +97,7 @@ int getAlivePlayer(void)
 	int cnt = 0;
 	for (i=0; i<N_PLAYER; i++)
 	{
-		if (player_status[i] != PLAYERSTATUS_DIE)
+		if (player_status[i] != PLAYERSTATUS_DIE)//////////////////////////////
 			cnt++;
 	}
 	return cnt;
@@ -127,7 +127,6 @@ int getWinner(void)
 
 void printGameResult(void)
 {
-    int i;
     int alivePlayers = getAlivePlayer();
     int winner = getWinner();
 
@@ -141,7 +140,15 @@ void printGameResult(void)
     {
         printf("Winner is %s\n", player_name[winner]);
     }
+
+    // 각 플레이어의 최종 상태 출력
+    for (int i = 0; i < N_PLAYER; ++i)
+    {
+        printf("%s's final status: pos %d, coin %d, status %s\n",
+               player_name[i], player_position[i], player_coin[i], player_statusString[player_status[i]]);
+    }
 }
+
 
 
 int main(int argc, char *argv[])
